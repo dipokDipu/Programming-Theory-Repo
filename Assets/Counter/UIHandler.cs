@@ -4,15 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class UIHandler : MonoBehaviour
+public class UIHandler : MonoBehaviour // INHERITANCE
 {
     public Text timeText;
     public Text CounterText;
     private float totalTime = 20f;
     public GameObject restart ,gameWin , gameOver;
-    public int count;
+    private int count;
 
     public static UIHandler instance;
+    
+    public int LifeCount// ENCAPSULATION
+    {
+        get{ return count; }
+        set 
+        {
+            if(count<=0)
+            {
+                count = 0;
+            }
+            else
+            {
+                count = value;
+            }
+        }
+
+    }
     // Start is called before the first frame update
 
     private void Awake()

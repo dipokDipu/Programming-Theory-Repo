@@ -31,8 +31,8 @@ public class Counter : MonoBehaviour
         {
             if(!BoxController.instance.GameOver)
             {
-                UIHandler.instance.count -= 1;
-                UIHandler.instance.CounterText.text = "Life Remaining: " + UIHandler.instance.count;
+                UIHandler.instance.LifeCount -= 1;
+                UIHandler.instance.CounterText.text = "Life Remaining: " + UIHandler.instance.LifeCount;
             }
             
         }

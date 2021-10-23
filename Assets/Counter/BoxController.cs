@@ -25,17 +25,21 @@ public class BoxController : MonoBehaviour
     {
         if(!GameOver && GameStart)
         {
-            if (transform.position.z > 12)
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y, 12f);
-            }
-            if (transform.position.z < -12)
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y, -12f);
-            }
-
-            float sideMove = Input.GetAxis("Horizontal");
-            transform.Translate(Vector3.forward * sideMove * Time.deltaTime * moveSpeed);
+            Move(); //ABSTRACTION
         }
+    }
+    private void Move()
+    {
+        if (transform.position.z > 12)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 12f);
+        }
+        if (transform.position.z < -12)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -12f);
+        }
+
+        float sideMove = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.forward * sideMove * Time.deltaTime * moveSpeed);//POLYMORPHISM
     }
 }
