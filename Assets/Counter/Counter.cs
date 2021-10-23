@@ -6,18 +6,35 @@ using UnityEngine.UI;
 
 public class Counter : MonoBehaviour
 {
-    public Text CounterText;
 
-    private int Count = 0;
 
     private void Start()
     {
-        Count = 0;
+    }
+
+    private void Update()
+    {
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Count += 1;
-        CounterText.text = "Count : " + Count;
+        if (other.CompareTag("ScoreTag"))
+        {
+            gameObject.transform.parent = other.gameObject.transform.parent;
+            
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Plane"))
+        {
+            if(!BoxController.instance.GameOver)
+            {
+                UIHandler.instance.count -= 1;
+                UIHandler.instance.CounterText.text = "Life Remaining: " + UIHandler.instance.count;
+            }
+            
+        }
     }
 }
